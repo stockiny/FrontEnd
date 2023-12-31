@@ -1,0 +1,35 @@
+
+<div class="page-header">
+    <div class="page-title">
+        <h4>AJOUT SERIE</h4>
+        <h6>Ajouter une serie</h6>
+    </div>
+</div>
+<!-- /add -->
+<div class="card">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-lg-4 col-sm-6 col-12">
+                <div class="form-group">
+                  <label>Réference</label>
+                  <input type="text" [(ngModel)]="reference" />
+                </div>
+              </div>
+              <div class="col-lg-8 col-sm-6 col-12">
+                <div class="form-group">
+                  <label>Libelle</label>
+                  <input type="text" [(ngModel)]="libelle" />
+                </div>
+              </div>
+
+           
+
+         
+            <div class="col-lg-12">
+                <button  class="btn btn-submit me-2" (click)="submit()">Submit</button>
+                <a [routerLink]="routes.serieList" class="btn btn-cancel">Cancel</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /add -->

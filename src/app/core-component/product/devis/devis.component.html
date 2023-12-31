@@ -1,0 +1,466 @@
+<div class="cardhead">
+    <div class=" container-fluid">
+
+        <!-- Page Header -->
+        <div class="page-header">
+            <div class="row">
+                <div class="col">
+                    <h3 class="page-title">Ajouter Un Nouveau Model</h3>
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item active">Devis</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- /Page Header -->
+
+
+
+                
+           
+                        <div class="card">
+                            <div class="card-body">
+<div class="row">
+                                <mat-stepper #stepper>
+                                    <mat-step [stepControl]="">
+                                       
+                                            <ng-template matStepLabel>Devis</ng-template>
+                                            
+                                            <div class="form-group row">
+                                                <div class="form-group row">
+                                                    <label class="col-sm-2 col-form-label">Réference</label>
+                                                    <div class="col-sm-10">
+                                                        <input type="text" [(ngModel)]="reference" /></div>
+                                                  </div>
+                                                <label class="col-form-label col-md-2">Select Models</label>
+                                                
+                                                <div class="col-md-10">
+                                                    <div className="">
+                                                        <input type="text" class="form form-select-lg form-control"
+                                                            name="model" autoComplete="off" value=""
+                                                            placeholder="Entrer Model Reference ou Designation"
+                                                            [(ngModel)]="selectedModel"
+                                                            (ngModelChange)="onModelChange()" />
+                                                        <datalist class="select" style="
+                                                            minWidth: '1130px';
+                                                            boxShadow: '0px 8px 16px 0px rgba(0, 0, 0, 0.2)';
+                                                            position: relative;
+                                                            display: block;
+                                                            zIndex: 1;">
+                                                            <div *ngFor=" let i of filtredModel">
+
+                                                                <mat-option key={i._id} name="i.Reference"
+                                                                    (click)="handleSelectionModel(i)">
+                                                                    Ref: {{i.Reference}} , Designation :
+                                                                    {{i.Designation}}
+
+                                                                </mat-option>
+
+                                                            </div>
+
+                                                        </datalist>
+                                                    </div>
+
+                                                </div>
+                                              
+                                            </div>
+                                            <div class="card-body">
+                                                <div class="table-responsive">
+                                                    <table class="table mb-0">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Order</th>
+                                                                <th>Ref </th>
+                                                                <th>Designation</th>
+                                                                <th>Qte</th>
+                                                                <th>Couleur</th>
+                                                                <th>Vitre</th>
+                                                                <th>Indication</th>
+                                                                <th>L </th>
+                                                                <th>H </th>
+                                                                <th>D1 </th>
+                                                                <th>D2 </th>
+                                                                <th>D3</th>
+                                                                <th>D4</th>
+                                                                <th>D5</th>
+                                                                <th>D6</th>
+                                                                <th>D7</th>
+                                                                <th>D8</th>
+                                                                <th>D9</th>
+                                                                <th>Couvre Joint</th>
+                                                                <th>Fodec</th>
+                                                                <th>TVA%</th>
+                                                                <th>Remise%</th>
+                                                                <th>Prix Un Ht</th>
+                                                                <th>Totale</th>
+
+
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr *ngFor="let item of selectedModels; let i=index">
+                                                                <td> {{i+1}}</td>
+                                                                <td> {{item.model.Reference}}</td>
+                                                                <td> {{item.model.Designation}}</td>
+
+                                                                <td>
+                                                                    <div class="form-group pt-4">
+                                                                        <input type="text" placeholder="Qte"
+                                                                            style="width: 130px;" name="Qte {{i}}"
+                                                                            [(ngModel)]="selectedModels[i].qte" />
+                                                                    </div>
+                                                                </td>
+
+                                                                <td *ngIf="couleurs.length >0">
+                                                                    <div class="form-group pt-4">
+                                                                        <mat-select style="width: 140px;"
+                                                                            name="couleur {{i}}"
+                                                                            [(ngModel)]="selectedModels[i].couleur"
+                                                                            class="select">
+                                                                            <mat-option 
+                                                                                value="Blanc">
+                                                                                Laqué Blanc
+                                                                            </mat-option>
+                                                                            <mat-option 
+                                                                                value="Noir">
+                                                                                Laqué Noir
+                                                                            </mat-option>
+                                                                            <mat-option 
+                                                                            value="Gris">
+                                                                            Laqué Gris
+                                                                        </mat-option>
+                                                                        <mat-option 
+                                                                        value="Autres">
+                                                                        Autres
+                                                                    </mat-option>
+
+                                                                        </mat-select>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="form-group pt-4">
+                                                                        <mat-select name="cadre {{i}}"
+                                                                            [(ngModel)]="selectedModels[i].vitre"
+                                                                            [ngModelOptions]="{standalone: true}"
+                                                                            class="select" placeholder="Vitrages" style="width: 150px;"
+                                                                            >
+                                                                            <mat-option *ngFor="let i of vitres" [value]="i">
+                                                                                {{i.Designation}}
+                                                                            </mat-option>
+
+                                                                        </mat-select>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+                                                                    <div class="form-group pt-4">
+                                                                        <input type="text" placeholder="Indication"
+                                                                            style="width: 130px;"
+                                                                            name="Indication {{i}}"
+                                                                            [(ngModel)]="selectedModels[i].Indication" />
+                                                                    </div>
+
+                                                                </td>
+
+                                                                <td>
+                                                                    <div class="form-group pt-4">
+                                                                        <input type="number" placeholder="L"
+                                                                            style="width: 130px;" name="L {{i}}"
+                                                                            [(ngModel)]="selectedModels[i].L"
+                                                                            (keyup)="calcul(i)"
+                                                                            />
+                                                                    </div>
+
+
+
+                                                                </td>
+                                                                <td>
+                                                                    <div class="form-group pt-4">
+                                                                        <input type="number" placeholder="H"
+                                                                            style="width: 130px;" name="H {{i}}"
+                                                                            [(ngModel)]="selectedModels[i].H" 
+                                                                            (keyup)="calcul(i)"
+                                                                            />
+                                                                    </div>
+
+
+
+                                                                </td>
+                                                                <td>
+                                                                    <div class="form-group pt-4">
+                                                                        <input type="text" placeholder="D1"
+                                                                            style="width: 130px;" name="D1 {{i}}"
+                                                                            [(ngModel)]="selectedModels[i].D1" />
+                                                                    </div>
+
+
+
+                                                                </td>
+                                                                <td>
+                                                                    <div class="form-group pt-4">
+                                                                        <input type="text" placeholder="D2"
+                                                                            style="width: 130px;" name="D2 {{i}}"
+                                                                            [(ngModel)]="selectedModels[i].D2" />
+                                                                    </div>
+
+
+
+                                                                </td>
+                                                                <td>
+                                                                    <div class="form-group pt-4">
+                                                                        <input type="text" placeholder="D3"
+                                                                            style="width: 130px;" name="D3 {{i}}"
+                                                                            [(ngModel)]="selectedModels[i].D3" />
+                                                                    </div>
+
+
+
+                                                                </td>
+                                                                <td>
+                                                                    <div class="form-group pt-4">
+                                                                        <input type="text" placeholder="D4"
+                                                                            style="width: 130px;" name="D4 {{i}}"
+                                                                            [(ngModel)]="selectedModels[i].D4" />
+                                                                    </div>
+
+
+
+                                                                </td>
+                                                                <td>
+                                                                    <div class="form-group pt-4">
+                                                                        <input type="text" placeholder="D5"
+                                                                            style="width: 130px;" name="D5 {{i}}"
+                                                                            [(ngModel)]="selectedModels[i].D5" />
+                                                                    </div>
+
+
+
+                                                                </td>
+                                                                <td>
+                                                                    <div class="form-group pt-4">
+                                                                        <input type="text" placeholder="D6"
+                                                                            style="width: 130px;" name="D6 {{i}}"
+                                                                            [(ngModel)]="selectedModels[i].D6" />
+                                                                    </div>
+
+
+
+                                                                </td>
+                                                                <td>
+                                                                    <div class="form-group pt-4">
+                                                                        <input type="text" placeholder="D7"
+                                                                            style="width: 130px;" name="D7 {{i}}"
+                                                                            [(ngModel)]="selectedModels[i].D7" />
+                                                                    </div>
+
+
+
+                                                                </td>
+                                                                <td>
+                                                                    <div class="form-group pt-4">
+                                                                        <input type="text" placeholder="D8"
+                                                                            style="width: 130px;" name="D8 {{i}}"
+                                                                            [(ngModel)]="selectedModels[i].D8" />
+                                                                    </div>
+
+
+
+                                                                </td>
+                                                                <td>
+                                                                    <div class="form-group pt-4">
+                                                                        <input type="text" placeholder="D9"
+                                                                            style="width: 130px;" name="D9 {{i}}"
+                                                                            [(ngModel)]="selectedModels[i].D9" />
+                                                                    </div>
+
+
+
+                                                                </td>
+                                                                <td>
+                                                                    <div class="form-group pt-4">
+                                                                        <div class="form-group form-check">
+                                                                            <input type="checkbox"
+                                                                                class="form-check-input"
+                                                                                id="exampleCheck1"
+                                                                                name="couvre_joint {{i}}"
+                                                                                [(ngModel)]="selectedModels[i].couvre_joint_droite"
+                                                                                checked />
+                                                                            <label class="form-check-label"
+                                                                                for="exampleCheck1">Droite</label>
+                                                                            <input type="checkbox"
+                                                                                class="form-check-input"
+                                                                                id="exampleCheck1"
+                                                                                name="couvre_joint {{i}}"
+                                                                                [(ngModel)]="selectedModels[i].couvre_joint_gauche"
+                                                                                checked>
+                                                                            <label class="form-check-label"
+                                                                                for="exampleCheck1">Gauche</label>
+                                                                            <input type="checkbox"
+                                                                                class="form-check-input"
+                                                                                id="exampleCheck1"
+                                                                                name="couvre_joint {{i}}"
+                                                                                [(ngModel)]="selectedModels[i].couvre_joint_haut"
+                                                                                checked>
+                                                                            <label class="form-check-label"
+                                                                                for="exampleCheck1">Haut</label>
+                                                                            <input type="checkbox"
+                                                                                class="form-check-input"
+                                                                                id="exampleCheck1"
+                                                                                name="couvre_joint {{i}}"
+                                                                                [(ngModel)]="selectedModels[i].couvre_joint_bas"
+                                                                                checked>
+                                                                            <label class="form-check-label"
+                                                                                for="exampleCheck1">BAS</label>
+                                                                        </div>
+
+
+
+
+
+                                                                    </div>
+
+
+
+                                                                </td>
+                                                                <td>
+                                                                    <div class="form-group pt-4">
+                                                                        <input type="text" placeholder="Fodec"
+                                                                            style="width: 130px;" name="Fodec {{i}}"
+                                                                            [(ngModel)]="selectedModels[i].fodec" />
+                                                                    </div>
+
+
+
+                                                                </td>
+                                                                <td>
+                                                                    <div class="form-group pt-4">
+                                                                        <input type="text" placeholder="TVA%"
+                                                                            style="width: 130px;" name="TVA {{i}}"
+                                                                            [(ngModel)]="selectedModels[i].tva" />
+                                                                    </div>
+
+
+
+                                                                </td>
+                                                                <td>
+                                                                    <div class="form-group pt-4">
+                                                                        <input type="text" placeholder="Remise%"
+                                                                            style="width: 130px;" name="remise {{i}}"
+                                                                            [(ngModel)]="selectedModels[i].remise" />
+                                                                    </div>
+
+
+
+                                                                </td>
+                                                                <td>
+                                                                    <div class="form-group pt-4">
+                                                                        <input type="text" placeholder="prix_un_ht"
+                                                                            style="width: 130px;"
+                                                                            name="prix_un_ht {{i}}"
+                                                                            [(ngModel)]="selectedModels[i].prix_un_ht"
+                                                                            disabled />
+                                                                    </div>
+
+
+
+
+                                                                </td>
+                                                                <td>
+                                                                    <div class="form-group pt-4">
+                                                                        <input type="number" class="form-control"
+                                                                            style="width: 130px;" name="total {{i}}"
+                                                                            
+                                                                            [(ngModel)]="selectedModels[i].totale" />
+                                                                    </div>
+
+
+
+                                                                </td>
+
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+
+                                            <hr class="hr hr-blurry" />
+                                            <div class="row">
+
+				<div class="col-lg-12">
+					<div class="form-group">
+						<label style="text-align: center;font-weight: bold;">PRIX</label>
+						
+					</div>
+				</div>
+				<div class="col-lg-4">
+					<div class="form-group">
+						<label>T.H.T</label>
+						<input type="number" class="form-control" id="tht" name="tht" [(ngModel)]="tht" readonly>
+						
+					</div>
+				</div>
+             
+				<div class="col-lg-4">
+					<div class="form-group">
+						<label>T.R</label>
+						<div class="input-group">
+							<input type="number" class="form-control" id="tr" name="tr" [(ngModel)]="tr" (keyup)="ht1Fodec()"> 
+							<div class="input-group-append">
+								<span class="input-group-text">%</span>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4 col-sm-6 col-12">
+					<div class="form-group">
+						<label>Total H.T</label>
+						<input type="number" class="form-control" id="totalht" name="totalht" [(ngModel)]="totalht" readonly>
+
+					
+					</div>
+				</div>
+                <div class="col-lg-4 col-sm-6 col-12">
+					<div class="form-group">
+						<label>FODEC</label>
+						<input type="number" class="form-control" id="fodec" name="fodec" [(ngModel)]="fodec" readonly>
+						
+					</div>
+				</div>
+             
+                <div class="col-lg-4 col-sm-6 col-12">
+					<div class="form-group">
+						<label>Total T.V.A</label>
+						<input type="number" class="form-control" id="totaltva" name="totaltva" [(ngModel)]="totaltva" readonly>
+						
+					</div>
+				</div>
+				<div class="col-lg-4 col-sm-6 col-12">
+					<div class="form-group">
+						<label>Total T.T.C</label>
+						<input type="number" class="form-control" id="totalttc" name="totalttc" [(ngModel)]="totalttc" readonly>
+
+					
+					</div>
+				</div>
+            </div>
+			
+				
+                                            <div class="col-lg-12">
+                                            
+                                                <a href="javascript:void(0);" class="btn btn-submit me-2" (click)="Submit()">Enregistrer</a>
+
+                                                <a href="javascript:void(0);" class="btn btn-submit me-2" (click)="Optimisation()">Optimisation <i class="feather icon-loader" data-bs-toggle="tooltip" title="feather icon-loader" style="color: red;"></i></a>
+                                                <a [routerLink]="" class="btn btn-cancel">Annuler</a>
+                                            </div>
+                                        
+
+                                    </mat-step>
+
+                                </mat-stepper>
+                            </div>
+                        </div>
+                 
+                 
+                
+        </div>
+    </div>
+</div>

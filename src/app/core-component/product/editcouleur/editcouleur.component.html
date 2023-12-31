@@ -1,0 +1,31 @@
+<div class="page-header">
+    <div class="page-title">
+        <h4>Update Couleur</h4>
+        <h6>Edit a couleur</h6>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-lg-6 col-sm-6 col-12">
+                <div class="form-group">
+                    <label>Couleur Reference</label>
+                    <input type="text" [(ngModel)]="couleur.Reference">
+                </div>
+            </div>
+            <div class="col-lg-6 col-sm-6 col-12">
+                <div class="form-group">
+                    <label>Couleur Designation</label>
+                    <input type="text" [(ngModel)]="couleur.Designation">
+                </div>
+            </div>
+            <!-- Add more fields as needed -->
+
+            <div class="col-lg-12">
+                <a href="javascript:void(0);" class="btn btn-submit me-2" (click)="submit()">Submit</a>
+                <a routerLink="/product/couleurlist" class="btn btn-cancel">Cancel</a>
+            </div>
+        </div>
+    </div>
+</div>

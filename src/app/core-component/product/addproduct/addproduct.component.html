@@ -1,0 +1,138 @@
+
+<div class="page-header">
+	<div class="page-title">
+		<h4>Ajouter Un Article</h4>
+		
+	</div>
+</div>
+<!-- /add -->
+<div class="card">
+	<div class="card-body">
+		<div class="row">
+			<div class="col-lg-4 col-sm-6 col-12">
+				<div class="form-group">
+				  <label>Réference</label>
+				  <input type="text" [(ngModel)]="reference" />
+				</div>
+			  </div>
+			  <div class="col-lg-8 col-sm-6 col-12">
+				<div class="form-group">
+				  <label>Désignation</label>
+				  <input type="text" [(ngModel)]="designation" />
+				</div>
+			  </div>
+			<div class="col-lg-4 col-sm-6 col-12">
+				<div class="form-group">
+					<label>Catégorie</label>
+					<mat-select [(ngModel)]="cat"  class="select"  placeholder="Choose Sub Category">
+						<mat-option  value="">
+							</mat-option>
+						<mat-option *ngFor="let data of description" [value]="data._id">
+						{{data.description}}
+						</mat-option>
+					</mat-select>
+				</div>
+			</div>	
+			<div class="col-lg-6 col-sm-6 col-12" *ngIf="Contact && Contact.length > 0">
+				<div class="form-group">
+				  <label>Fournisseur</label>
+				  <mat-select [(ngModel)]="fournisseur" class="select" placeholder="Choose Unit">
+					<mat-option value=""></mat-option>
+					<mat-option *ngFor="let data of Contact" [value]="data._id">
+					  {{data.Contact}}
+					</mat-option>
+				  </mat-select>
+				</div>
+			  </div>
+			  
+			<br/>	
+			<div class="col-lg-12">
+				<div class="form-group">
+					<label> Image Article</label>
+					<div class="image-upload">
+						<input type="file" (change)="onFileSelected($event)">
+						<div class="image-uploads">
+							<img src="assets/img/icons/upload.svg" alt="img">
+							<h4>Drag and drop a file to upload</h4>
+						</div>
+					</div>
+				</div>
+			</div>
+			<hr class="hr hr-blurry" />
+
+			<div class="col-lg-12">
+				<div class="form-group">
+					<label style="text-align: center;font-weight: bold;">PRIX</label>
+					
+				</div>
+			</div>
+			<div class="col-lg-4 col-sm-6 col-12">
+				<div class="form-group">
+					<label>Prix d'achat HT</label>
+					<input type="number" class="form-control" id="fodec" name="fodec" [(ngModel)]="ht1" (keyup)="ht1Fodec()">
+					
+				</div>
+			</div>
+			<div class="col-lg-4 col-sm-6 col-12">
+				<div class="form-group">
+					<label>Fodec</label>
+					<div class="input-group">
+						<input type="number" class="form-control" id="fodec" name="fodec" [(ngModel)]="fodec" (keyup)="ht1Fodec()"> 
+						<div class="input-group-append">
+							<span class="input-group-text">%</span>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-4 col-sm-6 col-12">
+				<div class="form-group">
+					<label>Prix d'achat HT</label>
+					<input type="number" class="form-control" id="fodec" name="fodec" [(ngModel)]="ht2" readonly>
+
+				
+				</div>
+			</div>
+			
+		
+			<div class="col-lg-4 col-sm-6 col-12">
+				<div class="form-group">
+					<label>Taux T.V.A</label>
+					<div class="input-group">
+						<input type="number" class="form-control" id="fodec" name="fodec" [(ngModel)]="tva" (keyup)="ht1Fodec()">
+						<div class="input-group-append">
+							<span class="input-group-text">%</span>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-4 col-sm-6 col-12">
+				<div class="form-group">
+					<label>Cout d'achat TTC</label>
+					<input type="number" class="form-control"  [(ngModel)]="ht3" readonly>
+				</div>
+			</div>
+			<div class="col-lg-4 col-sm-6 col-12">
+				<div class="form-group">
+					<label>Marge</label>
+					<div class="input-group">
+						<input type="number" class="form-control" id="marge" name="marge" [(ngModel)]="marge" (keyup)="ht1Fodec()">
+						<div class="input-group-append">
+							<span class="input-group-text">%</span>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-12 col-sm-6 col-12">
+				<div class="form-group">
+					<label>Prix de vente TTC </label>
+					<input type="number" class="form-control" [(ngModel)]="ttc" readonly>
+				</div>
+			</div>	
+			<div class="col-lg-12">
+				<a href="javascript:void(0);" class="btn btn-submit me-2" (click)="Submit()">Submit</a>
+				<a [routerLink]="routes.productList" class="btn btn-cancel">Cancel</a>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- /add -->

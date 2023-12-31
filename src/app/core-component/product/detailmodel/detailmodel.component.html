@@ -1,0 +1,117 @@
+<div *ngIf="dataLoaded">
+    <div class="col-lg-12" *ngIf=" model?.Profiles && model.Profiles.length > 0">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title">Profiles</h5>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-striped mb-0">
+                        <thead>
+                            <tr>
+                                <th>Reference</th>
+                                <th>Debitage</th>
+                                <th>Quantité</th>
+                                <th>Type de Cadre</th>
+                                <th>Coupe</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let profile of Profiles">
+                                <td>{{ profile.Reference }}</td>
+                                <td>{{ profile.debitage }}</td>
+                                <td>{{ profile.qte }}</td>
+                                <td>{{ profile.typeCadre }}</td>
+                                <td>{{ profile.coupe }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title">Vitrage</h5>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-striped mb-0">
+                        <thead>
+                            <tr>
+                                <th>Longeur</th>
+                                <th>Largeur</th>
+                                <th>Quantité</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let vitrage of Vitrage">
+                                <td>{{ vitrage.longeur }}</td>
+                                <td>{{ vitrage.hauteur }}</td>
+                                <td>{{ vitrage.qte }}</td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-12" *ngIf=" accesssoires && accesssoires.length > 0">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title">Accessoires</h5>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-striped mb-0">
+                        <thead>
+                            <tr>
+                                <th>Reference</th>
+                                <th>Type</th>
+                                <th>Quantité</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let accessoire of accesssoires">
+                                <td>{{ accessoire.mp.Reference }}</td>
+                                <td>{{ accessoire.mp.Type }}</td>
+                                <td>{{ accessoire.qte }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-12" *ngIf=" autres && autres.length > 0">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title">Autre</h5>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-striped mb-0">
+                        <thead>
+                            <tr>
+                                <th>Reference</th>
+                                <th>Designation</th>
+                                <th>Quantité</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let autre of autres">
+                                <td>{{ autre.mp.Designation }}</td>
+                                <td>{{ autre.mp.Reference }}</td>
+                                <td>{{ autre.qte }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

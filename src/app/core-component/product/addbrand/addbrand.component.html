@@ -1,0 +1,44 @@
+<div class="page-header">
+  <div class="page-title">
+    <h4>AJOUT MARQUE</h4>
+    <h6>Ajouter une marque</h6>
+  </div>
+</div>
+<!-- /add -->
+<div class="card">
+  <div class="card-body">
+    <div class="row">
+      <div class="col-lg-4 col-sm-6 col-12">
+        <div class="form-group">
+          <label>Réference</label>
+          <input type="text" [(ngModel)]="reference" readonly/>
+        </div>
+      </div>
+      <div class="col-lg-8 col-sm-6 col-12">
+        <div class="form-group">
+          <label>Libelle</label>
+          <input type="text" [(ngModel)]="libelle" />
+        </div>
+      </div>
+    
+
+      <div class="col-lg-12">
+        <div class="form-group">
+          <label> Marque image</label>
+          <div class="image-upload">
+            <input type="file" (change)="onFileSelected($event)"/>
+            <div class="image-uploads">
+              <img src="assets/img/icons/upload.svg" alt="img" />
+              <h4>Drag and drop a file to upload</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-12">
+        <button (click)="submit()" class="btn btn-submit me-2">Submit</button>
+        <a [routerLink]="routes.brandList" class="btn btn-cancel">Cancel</a>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- /add -->

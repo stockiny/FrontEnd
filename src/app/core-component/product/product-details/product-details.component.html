@@ -1,0 +1,102 @@
+<div class="page-header">
+  <div class="page-title">
+    <h4>Detail MP ref : {{materiel?.Reference}}</h4>
+    <h6></h6>
+  </div>
+</div>
+<!-- /add -->
+<div class="row">
+  <div class="col-lg-9 col-sm-12">
+    <div class="card">
+      <div class="card-body">
+        <div class="bar-code-view">
+          <img src="assets/img/barcode1.png" alt="barcode" />
+          <a class="printimg">
+            <img src="assets/img/icons/printer.svg" alt="print" />
+          </a>
+        </div>
+        <div class="productdetails">
+          <ul class="product-bar">
+            <li>
+              <h4>Reference</h4>
+              <h6>{{materiel?.Reference}}</h6>
+            </li>
+            <li>
+              <h4>Designation</h4>
+              <h6>{{materiel?.Designation}}</h6>
+            </li>
+            <li>
+              <h4>Type</h4>
+              <h6>{{materiel?.Type}}</h6>
+            </li>
+            <li>
+              <h4>Categorie</h4>
+              <h6 >{{materiel?.Categorie?.Categories}}</h6>
+            </li>
+            <li>
+              <h4>Serie</h4>
+              <h6>{{materiel?.Serie?.Libelle}}</h6>
+            </li>
+            <li>
+              <h4>Marque</h4>
+              <h6>{{materiel?.Marque?.Libelle}}</h6>
+            </li>
+            <li>
+              <h4>Fournisseur</h4>
+              <h6>{{materiel?.Fournisseur?.Fournisseurs}}</h6>
+            </li>
+            <li>
+              <h4>Prix Achat HT</h4>
+              <h6 style="font-weight: bold;">{{materiel?.PrixAchatHT}} TND</h6>
+            </li>
+            <li>
+              <h4>Fodec</h4>
+              <h6>{{materiel?.TauxFodec}} %</h6>
+            </li>
+            <li>
+              <h4>Taux T.V.A</h4>
+              <h6>{{materiel?.TauxTVA}} %</h6>
+            </li>
+            <li>
+              <h4>Cout Achat TTC</h4>
+              <h6 style="font-weight: bold;">{{materiel?.CoutAchatTTC}} TND</h6>
+            </li>
+            <li>
+              <h4>Marge</h4>
+              <h6>{{materiel?.TauxMarge}} %</h6>
+            </li>
+            <li>
+              <h4>PrixVenteTTC</h4>
+              <h6 style="font-weight: bold;">
+                {{materiel?.PrixVenteTTC}} TND
+              </h6>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-3 col-sm-12">
+    <div class="card">
+      <div class="card-body">
+        <div class="slider-product-details">
+          <!-- <div class="owl-carousel owl-theme product-slide">
+             -->
+    
+    
+             
+                <img [src]="image" alt="img" style="height: 200px;width: 200px;"/>
+                
+             
+     
+         
+      
+
+          <!-- </div> -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- /add -->

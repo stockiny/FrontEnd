@@ -1,0 +1,162 @@
+<div class="cardhead">
+    <div class=" container-fluid">
+
+        <!-- Page Header -->
+        <div class="page-header">
+            <div class="row">
+                <div class="col">
+                    <h3 class="page-title">Ajouter Une Nouvelle Vente</h3>
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a [routerLink]="routes.dashboard">Dashboard</a></li>
+                        <li class="breadcrumb-item active">Ajouter Une Commande</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- /Page Header -->
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-title">Nouvelle Commande</h5>
+                    </div>
+                    <div class="card-body">
+                        <form>
+                            <div class="form-group row">
+                                <label>Client</label>
+                                <div class="col-md-10">
+                                    <mat-select [(ngModel)]="selectedClient" class="select" name="Client"
+                                        placeholder="-- Select --">
+                                        <mat-option *ngFor="let data of clients" [value]="data._id">
+                                            {{data.nom}} {{data.prenom}}
+                                        </mat-option>
+                                    </mat-select>
+                                </div>
+                                
+                            </div>
+                            <div class="form-group row">
+                                <div class="form-group">
+                                    <label>Etat</label>
+                                    <mat-select [(ngModel)]="Etat" name="Etat" class="select" placeholder="Choisir Etat">
+                                        <mat-option value="Payée">Payée</mat-option>
+                                        <mat-option value="Non Payée">Non Payée</mat-option>
+                                        <mat-option value="En Cours">En Cours</mat-option>
+                                    </mat-select>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group row">
+                                <div class="form-group">
+                                    <label>Date de Livraison</label>
+                                    <input type="date" [(ngModel)]="DateSortie"  name="DateSortie" class="form-control">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <mat-stepper #stepper>
+                                    <mat-step>
+                                        <form>
+                                            <ng-template matStepLabel>Articles</ng-template>
+                                            <div class="form-group row">
+                                                <label class="col-form-label col-md-2">Select Article</label>
+                                                <div class="col-md-10">
+                                                    <div class="">
+                                                        <input type="text" class="form form-select-lg form-control"
+                                                            name="FirstName" autoComplete="off" value=""
+                                                            placeholder="Enter Article"
+                                                            [(ngModel)]="selectedAccesoire"
+                                                            (ngModelChange)="onAccesoireChange()" />
+                                                        <datalist class="select" style="
+                                                            minWidth: '160px';
+                                                            boxShadow: '0px 8px 16px 0px rgba(0, 0, 0, 0.2)';
+                                                            position: relative;
+                                                            display: block;
+                                                            zIndex: 1;">
+                                                            <div *ngFor=" let i of filtredAccesoires">
+
+                                                                <mat-option key={i._id} name="i.Reference"
+                                                                    (click)="handleSelectionAccesoire(i)">
+                                                                    <span [ngClass]="{'white-text': theme === 'Dark'}">
+                                                                        Reference : {{i.Reference}} , Designation :
+                                                                        {{i.Designation}}
+                                                                    </span>
+
+                                                                </mat-option>
+
+                                                            </div>
+
+                                                        </datalist>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                            <div class="card-body">
+                                                <div class="table-responsive">
+                                                    <table class="table mb-0">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Order</th>
+                                                                <th>Reference Article </th>
+                                                                <th>Designation Article</th>
+                                                                <th>Qte</th>
+                                                                <th>Delete </th>
+
+
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr *ngFor="let item of selectedAccesoires; let i=index">
+                                                                <td> {{i+1}}</td>
+                                                                <td> {{item.article.Reference}}</td>
+                                                                <td> {{item.article.Designation}}</td>
+
+
+
+                                                                <td>
+                                                                    <div class="form-group pt-4">
+                                                                        <input type="text" placeholder="Qte"
+                                                                            name="Qte {{i}}"
+                                                                            [(ngModel)]="selectedAccesoires[i].qte" />
+                                                                    </div>
+                                                                </td>
+
+                                                                <td>
+                                                                    <a href="javascript:void(0);"
+                                                                        (click)="deleteAccesoire(item)"><i
+                                                                            class="far fa-trash-alt"></i></a>
+
+
+                                                                </td>
+
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <br />
+
+                                                <div>
+    
+                                                    <a href="javascript:void(0);" style="position: absolute; right: 60px;"
+                                                        class="btn btn-submit me-2" (click)="save()">Submit</a>
+                                                </div>
+                                            </div>
+                                        </form>
+
+                                    </mat-step>
+                                </mat-stepper>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
