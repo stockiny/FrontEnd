@@ -12,10 +12,8 @@ export class DetailmodelComponent {
 
   model: any;
   dataLoaded = false;
-  Vitrage: any;
-  Profiles: any;
-  accesssoires: any;
-  autres: any;
+  sorties: any[] = [];
+
 
 
   public routes = routes;
@@ -25,27 +23,35 @@ export class DetailmodelComponent {
     private appService: AppService
   ) { }
 
+  calculerSommePrix(): number {
+    let somme = 0;
+
+    for (const sortie of this.sorties) {
+      for (const article of sortie.Article) {
+        somme += article.article.PrixVenteTTC;
+      }
+    }
+  
+    return somme;
+  }
+  
+
   ngOnInit(): void {
-    console.log("pl")
+    console.log("pl");
     this.activatedRoute.paramMap.subscribe(params => {
-      const modelId = params.get('id');
-      console.log(modelId);
-      if (modelId) {
-        this.appService.getModeltDetail(modelId).subscribe(
-          (data) => {
-            console.log(data);
-            this.model = data.model;
-            this.Vitrage = this.model.Vitrage;
-            this.Profiles = this.model.Profiles;
-            this.accesssoires = this.model.Accessoires;
-            this.autres = this.model.Autres;
-            this.dataLoaded = true; // Indiquer que les données sont chargées
+        const clientId = params.get('id');
+        console.log(clientId);
+        this.appService.getVenteByClient(clientId).subscribe(
+          (data: any) => {
+              console.log('Sorties data:', data);
+              this.sorties = data.sorties;
+              this.dataLoaded = true;
           },
           (error) => {
-            console.error('Error fetching model details:', error);
+              console.error('Error fetching sorties:', error);
           }
-        );
-      }
+      );
     });
-  }
+}
+
 }

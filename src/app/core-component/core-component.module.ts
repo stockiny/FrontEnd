@@ -23,6 +23,7 @@ import { sharedModule } from '../shared/shared.module';
     SidebarFourComponent,
     SidebarFiveComponent,
     LayoutComponent,
+ 
   ],
   imports: [CommonModule, CoreComponentRoutingModule, sharedModule],
   providers: [],

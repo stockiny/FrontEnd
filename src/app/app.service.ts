@@ -183,6 +183,20 @@ export class AppService {
   getArticleById(id): Observable<any> {
     return this.http.get(`${this.articleUrl}/articles/${id}`);
   }
+  getVenteById(id): Observable<any> {
+    return this.http.get(`${this.venteUrl}/sorties/${id}`);
+  }
+  getVenteByClient(clientId): Observable<any> {
+    return this.http.get(`${this.venteUrl}/sorties/client/${clientId}`);
+  }
+
+  getSumOfPrices(): Observable<any> {
+    return this.http.get<any>(`${this.articleUrl}/articles/somme`);
+  }
+  getSumOfPricesTTC(): Observable<any> {
+    return this.http.get<any>(`${this.articleUrl}/articles/sommeTTC`);
+  }
+
   deteleArticle(id): Observable<any> {
 
     return this.http.delete(`${this.articleUrl}/articles/${id}`,)
@@ -197,6 +211,7 @@ export class AppService {
     return this.http.post(`${this.articleUrl}/articles`, data
     )
   }
+ 
 
   deleteModel(id): Observable<any> {
     return this.http.delete(`${this.modelUrl}/models/${id}`);

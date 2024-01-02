@@ -166,10 +166,11 @@
               </label>
             </th>
             <th mat-sort-header="ProductName">Photo</th>
-            <th mat-sort-header="ProductName">Reference</th>
+            <th mat-sort-header="Reference">Reference</th>
             <th mat-sort-header="SKU">Designation</th>
             <th mat-sort-header="Categorie">Categorie</th>
             <th mat-sort-header="Fournisseur">Fournisseur</th>
+            <th mat-sort-header="Quantite">Quantite Disponible</th>
             <th mat-sort-header="CoutAchatTTC">Cout Achat TTC</th>
             <th mat-sort-header="PrixVenteTTC">Prix Vente TTC</th>
 
@@ -195,8 +196,9 @@
             </td>
             <td>{{ products.Reference }}</td>
             <td>{{ products.Designation }}</td>
-            <td>{{ products.Categorie.description }}</td>
-            <td>{{ products.Fournisseur?.Contact }}</td>
+            <td>{{ products.Categorie.description}}</td>
+            <td>{{ products.Fournisseur?.Telephone}}</td>
+            <td>{{ products.Quantite}}</td>
             <td>{{ products.CoutAchatTTC }}</td>
             <td>{{ products.PrixVenteTTC }}</td>
 

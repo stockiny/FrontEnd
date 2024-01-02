@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { AppService } from 'src/app/app.service';
 import { environment } from 'src/environments/environment';
+import { routes } from 'src/app/core/core.index';
 
 @Component({
   selector: 'app-product-details',
@@ -10,48 +11,39 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./product-details.component.scss'],
 })
 export class ProductDetailsComponent {
-  customOptions: OwlOptions = {
-    loop: true,
-    mouseDrag: false,
-    touchDrag: false,
-    pullDrag: false,
-    dots: false,
-    navSpeed: 700,
-    navText: [
-      '<i class="fas fa-chevron-left"></i>',
-      '<i class="fas fa-chevron-right"></i>',
-    ],
-    responsive: {
-      0: {
-        items: 1,
-      },
-      400: {
-        items: 2,
-      },
-    },
-    nav: true,
-  };
-  id:any;
-  materiel:any;
-  image:any;
-  constructor(private route: ActivatedRoute,private appService:AppService) {
-    this.route.params.subscribe(params => {
-      this.id = params['id']; // Access the 'id' parameter from the route
+ 
+  model: any;
+  dataLoaded = false;
+  articles: any;
+
+
+  public routes = routes;
+
+  constructor(
+    private activatedRoute: ActivatedRoute,
+    private appService: AppService
+  ) { }
+
+  ngOnInit(): void {
+    console.log("pl")
+    this.activatedRoute.paramMap.subscribe(params => {
+      const modelId = params.get('id');
+      console.log(modelId);
+      if (modelId) {
+        this.appService.getArticleById(modelId).subscribe(
+          (data) => {
+            console.log(data);
+            this.model = data.model;
+            this.articles = this.model;
+            this.dataLoaded = true; // Indiquer que les données sont chargées
+          },
+          (error) => {
+            console.error('Error fetching model details:', error);
+          }
+        );
+      }
     });
-   }
-
-   ngOnInit(): void {
-    this.appService.getArticleById(this.id)
-    .subscribe(response => {
-      console.log(response)
-      this.materiel=response.materiel;
-      this.image=environment.backendUrl+"/"+response.materiel.Photo;
-
-
-    }
-    );
   }
-   
 
    
 

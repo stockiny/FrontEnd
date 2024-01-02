@@ -27,6 +27,7 @@ export class AddproductComponent {
   ht3:any;
   marge:any=0;
   ttc:any=-1;
+  quantite:any;
   constructor(private router:Router,private appService:AppService,private toastr: ToastrService) {
  
   }
@@ -57,6 +58,7 @@ export class AddproductComponent {
     formData.append('CoutAchatTTC',this.ht3);
     formData.append('PrixVenteTTC',this.ttc); 
     formData.append('Photo',this.image);
+    formData.append('Quantite',this.quantite);
    
    console.log(formData)
        this.appService.addArticles(formData)

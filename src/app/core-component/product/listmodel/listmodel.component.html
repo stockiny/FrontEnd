@@ -130,7 +130,7 @@
                         <td>{{ category.Etat }}</td>
 
                           <td>
-                            <a class="me-3" [routerLink]="[routes.detailmodel, category._id]">
+                            <a class="me-3" [routerLink]="[routes.detailmodel, category.Client._id]">
                                 <img src="assets/img/icons/edit.svg" alt="Edit" />
                             </a>
                             <a (click)="deleteBtn(category._id)" class="me-3 confirm-text" href="javascript:void(0);">

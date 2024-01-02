@@ -25,14 +25,9 @@
       </div>
       <div class="dash-widgetcontent">
         <h5>
-          $<span
-            class="counters"
-            [CountTo]="4385.0"
-            [from]="0"
-            [duration]="1"
-          ></span>
+          <span class="counters" [CountTo]="sumOfPrices" [from]="0" [duration]="1"></span>TND
         </h5>
-        <h6>Total Sales Due</h6>
+        <h6>Totale Article HT</h6>
       </div>
     </div>
   </div>
@@ -43,14 +38,9 @@
       </div>
       <div class="dash-widgetcontent">
         <h5>
-          $<span
-            class="counters"
-            [CountTo]="385656.5"
-            [from]="0"
-            [duration]="1"
-          ></span>
+          <span class="counters" [CountTo]="sumOfPricesTTC" [from]="0" [duration]="1"></span>TND
         </h5>
-        <h6>Total Sale Amount</h6>
+        <h6>Totale Article TTC</h6>
       </div>
     </div>
   </div>
@@ -180,7 +170,7 @@
       <div
         class="card-header pb-0 d-flex justify-content-between align-items-center"
       >
-        <h4 class="card-title mb-0">Recently Added Products</h4>
+        <h4 class="card-title mb-0">Les Dernier Produits Ajouteé</h4>
         <div class="dropdown">
           <a
             href="javascript:void(0);"
@@ -216,24 +206,20 @@
           >
             <thead>
               <tr>
-                <th mat-sort-header="Sno">Sno</th>
-                <th mat-sort-header="Products">Products</th>
+                <th mat-sort-header="Sno">Reference</th>
+                <th mat-sort-header="Products">Designation</th>
                 <th mat-sort-header="Price">Price</th>
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let dashboard of recentlyAddedProducts">
-                <td>{{ dashboard.Sno }}</td>
+              <tr *ngFor="let dashboard of articles">
+                <td>{{ dashboard.Reference }}</td>
                 <td class="productimgname">
-                  <a [routerLink]="routes.productList" class="product-img">
-                    <img [src]="dashboard.img" alt="product" />
-                  </a>
-                  <a [routerLink]="routes.productList">{{
-                    dashboard.Products
-                  }}</a>
+                  
+                  <a [routerLink]="routes.productList">{{ dashboard.Designation }}</a>
                 </td>
-                <td>{{ dashboard.Price | currency : currency }}</td>
-              </tr>
+                <td>{{ dashboard.PrixVenteTTC | currency : currency }}</td>
+              </tr>              
             </tbody>
           </table>
         </div>
@@ -255,31 +241,22 @@
       >
         <thead>
           <tr>
-            <th mat-sort-header="Sno">SNo</th>
-            <th mat-sort-header="ProductCode">Product Code</th>
-            <th mat-sort-header="ProductName">Product Name</th>
-            <th mat-sort-header="BrandName">Brand Name</th>
-            <th mat-sort-header="CategoryName">Category Name</th>
-            <th mat-sort-header="ExpiryDate">Expiry Date</th>
+            <th mat-sort-header="Client">Client</th>
+            <th mat-sort-header="Article">Article</th>
+            <th mat-sort-header="Date Sortie">Date Sortie</th>
+            <th mat-sort-header="Etat">Etat</th>
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let dashboard2 of expiredProducts">
-            <td>{{ dashboard2.SNo }}</td>
+          <tr *ngFor="let vente of ventes">
+            <td>{{ vente.Client?.prenom}}</td>
             <td>
-              <a href="javascript:void(0);">{{ dashboard2.ProductCode }}</a>
+              <ng-container *ngFor="let article of vente.Article">
+                {{ article?.article?.Reference }}
+              </ng-container>
             </td>
-            <td class="productimgname">
-              <a class="product-img" [routerLink]="routes.productList">
-                <img [src]="dashboard2.img" alt="product" />
-              </a>
-              <a [routerLink]="routes.productList">{{
-                dashboard2.ProductName
-              }}</a>
-            </td>
-            <td>{{ dashboard2.BrandName }}</td>
-            <td>{{ dashboard2.CategoryName }}</td>
-            <td>{{ dashboard2.ExpiryDate }}</td>
+            <td>{{ vente.sorties.DateSortie }}</td>
+            <td>{{ vente?.Etat }}</td>
           </tr>
         </tbody>
       </table>
