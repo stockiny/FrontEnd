@@ -54,6 +54,7 @@ export class ListFournisseursComponent {
   showFilter = false;
   dataSource!: MatTableDataSource<fournisseurList>;
   public searchDataValue = '';
+  index:any = 0;
   //** / pagination variables
 
   constructor(
