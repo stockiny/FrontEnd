@@ -6,13 +6,8 @@
       </div>
       <div class="dash-widgetcontent">
         <h5>
-          $<span
-            class="counters counter-value"
-            [CountTo]="307144.0"
-            [from]="0"
-            [duration]="1"
-          >
-          </span>
+          <span class="counters">{{ sumOfPricesTTC | number:'1.3-3' }}</span>
+          TND
         </h5>
         <h6>Total Purchase Due</h6>
       </div>
@@ -25,7 +20,8 @@
       </div>
       <div class="dash-widgetcontent">
         <h5>
-          <span class="counters" [CountTo]="sumOfPrices" [from]="0" [duration]="1"></span>TND
+          <span class="counters">{{ sumOfPrices | number:'1.3-3' }}</span>
+          TND
         </h5>
         <h6>Totale Article HT</h6>
       </div>
@@ -38,7 +34,8 @@
       </div>
       <div class="dash-widgetcontent">
         <h5>
-          <span class="counters" [CountTo]="sumOfPricesTTC" [from]="0" [duration]="1"></span>TND
+          <span class="counters">{{ sumOfPricesTTC | number:'1.3-3' }}</span>
+          TND
         </h5>
         <h6>Totale Article TTC</h6>
       </div>
@@ -51,12 +48,8 @@
       </div>
       <div class="dash-widgetcontent">
         <h5>
-          $<span
-            class="counters"
-            [CountTo]="40000.0"
-            [from]="0"
-            [duration]="1"
-          ></span>
+          <span class="counters">{{ sumOfPricesTTC | number:'1.3-3' }}</span>
+          TND
         </h5>
         <h6>Total Sale Amount</h6>
       </div>

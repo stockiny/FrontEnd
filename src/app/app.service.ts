@@ -10,7 +10,7 @@ export class AppService {
 
   categoriesUrl: any;
   marqueUrl: any;
-
+ stockUrl : any;
   couleurUrl: any;
   loginUrl: any;
   serieUrl: any;
@@ -38,6 +38,7 @@ export class AppService {
 
     this.devisUrl = environment.backendUrl + '/api/devis'
     this.venteUrl = environment.backendUrl + '/api/sortie'
+    this.stockUrl = environment.backendUrl + '/api/stock'
 
 
   }
@@ -190,6 +191,10 @@ export class AppService {
     return this.http.get(`${this.venteUrl}/sorties/client/${clientId}`);
   }
 
+  getMouvementStock(): Observable<any> {
+    return this.http.get(`${this.stockUrl}/stock`);
+  }
+  
   getSumOfPrices(): Observable<any> {
     return this.http.get<any>(`${this.articleUrl}/articles/somme`);
   }

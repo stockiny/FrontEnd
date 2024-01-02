@@ -185,6 +185,22 @@ export class SidebarService {
           subMenus: [],
         },]
     },
+    {
+      tittle: 'Mouvement Stock',
+      showAsTab: true,
+      separateRoute: false,
+      menu: [
+        {
+          menuValue: 'Mouvement Stock Article',
+          route: routes.productList,
+          page: 'edit-product',
+          hasSubRoute: false,
+          showSubRoute: false,
+          icon: 'box',
+          subMenus: [],
+        },
+      ]
+    },
     /*
         {
           tittle: 'Sales',

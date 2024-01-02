@@ -58,6 +58,7 @@ export class DashboardComponent {
   ventes: any[] = [];
   sumOfPrices: any = 0;
   sumOfPricesTTC: any = 0;
+  stock : any;
 
   public sortedArticles: any[] ;
 
@@ -160,13 +161,18 @@ export class DashboardComponent {
       console.log(res)
       this.articles=res.articles;
     });
+    this.appService.getMouvementStock().subscribe(res=>{
+      console.log(res)
+      this.stock=res.stock;
+    });
     this.appService.getAllVentes().subscribe(res => {
       console.log(res);
       this.ventes = res.vente;
     });
     this.appService.getSumOfPrices().subscribe(
       (data: any) => {
-        this.sumOfPrices = data.sum;
+        // Formater le résultat avec trois chiffres après la virgule
+        this.sumOfPrices = parseFloat(data.sum.toFixed(3));
       },
       (error) => {
         console.error('Error fetching sum of prices:', error);
