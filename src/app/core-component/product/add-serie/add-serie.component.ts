@@ -17,7 +17,6 @@ export class AddSerieComponent {
 
    
   submit(){
-     // Implement the submit logic here, e.g., calling a login service
  
      this.appService.addSerie(this.reference,this.libelle)
  .subscribe(response => {
