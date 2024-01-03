@@ -1359,43 +1359,7 @@ export class SidebarService {
           ],
         },
 
-        {
-          tittle: 'Places',
-          hasSubRoute: true,
-          icon: 'assets/img/icons/places.svg',
-          showSubRoute: false,
-          route: routes.places,
-          subRoutes: [
-            {
-              tittle: 'New Country',
-              hasSubRoute: false,
-              showSubRoute: false,
-              route: routes.newCountry,
-              subRoutes: [],
-            },
-            {
-              tittle: 'Countries list',
-              hasSubRoute: false,
-              showSubRoute: false,
-              route: routes.countriesList,
-              subRoutes: [],
-            },
-            {
-              tittle: 'New State',
-              hasSubRoute: false,
-              showSubRoute: false,
-              route: routes.newState,
-              subRoutes: [],
-            },
-            {
-              tittle: 'State List',
-              hasSubRoute: false,
-              showSubRoute: false,
-              route: routes.stateList,
-              subRoutes: [],
-            },
-          ],
-        },
+       
       ],
     },
 
