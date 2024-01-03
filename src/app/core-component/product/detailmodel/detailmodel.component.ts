@@ -23,6 +23,10 @@ export class DetailmodelComponent {
     private appService: AppService
   ) { }
 
+  imprimerFacture(): void {
+    window.print();
+  }
+
   calculerSommePrix(): number {
     let somme = 0;
 
@@ -33,6 +37,17 @@ export class DetailmodelComponent {
     }
   
     return somme;
+  }
+  calculerSommePrixHT(): number {
+    let sommeHT = 0;
+
+    for (const sortie of this.sorties) {
+      for (const article of sortie.Article) {
+        sommeHT += article.article.PrixAchatHT;
+      }
+    }
+  
+    return sommeHT;
   }
   
 
@@ -46,6 +61,7 @@ export class DetailmodelComponent {
               console.log('Sorties data:', data);
               this.sorties = data.sorties;
               this.dataLoaded = true;
+              this.calculerSommePrix 
           },
           (error) => {
               console.error('Error fetching sorties:', error);

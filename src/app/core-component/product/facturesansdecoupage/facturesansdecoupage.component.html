@@ -3,10 +3,10 @@
     <div class="invc_header">
         <div class="container">
             <div class="row justify-content-md-center">
-                <div class="col-md-8 col-sm-12">
+                <div class="col-md-8 col-sm-6">
                     <div class="header102">
                         <div class="header_logo">
-                            <img src="images/invoice_logo.svg" alt="">
+                            <img src="assets/img/logo.png" alt="Logo">
                         </div>
                         <div class="invoice_heading">
                             <h6></h6>
@@ -16,8 +16,8 @@
             </div>
         </div>
     </div>
-    <!-- Header End -->
-    <!-- Invoice Body Start -->
+
+    <div>
     <section class="invoice_section">
         <div class="container">
             <div class="row justify-content-md-center">
@@ -25,109 +25,64 @@
                     <div class="invoice_body">
                         <div class="nvdate_df">
                             <div class="nvde_dt45">
-                                <p style="color: black; font-weight: bold;">LE CINTRAGE ALU</p>
-                                <p style="color: black; font-weight: bold;">MENUISERIE ALUMINIUM</p>
-                                <p style="color: black; font-weight: bold;">CINTRAGE DE TOUS GENRE DE PROFILES</p>
-
+                                <p style="color: black; font-weight: bold;">JEMSIT</p>
+                                <p style="color: black; font-weight: bold;">LA Goulette Casino</p>
+                                <p style="color: black; font-weight: bold;">Informatique</p>
                             </div>
-                            <div class="nvde_dt46">
-                                <ul class="in11448">
-                                    <li>
-                                        <div class="vdt-list"><span>Date :</span>{{date}}</div>
-                                    </li>
-                                    <li>
-                                        <div class="vdt-list"><span>Devis No :</span>{{devis.Reference}}</div>
-                                    </li>
-
-                                </ul>
-                            </div>
-                        </div>
-
-                        <h3 class="dff474">Devis N° {{devis.Reference}} Global</h3>
-                        <div class="jike145">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="vhls140">
-                                        <h4>Nom et Prénom</h4>
-                                        <ul>
-                                            <li>
-                                                <div class="vdt-list" style="color: black;">{{devis.Client}}</div>
-                                            </li>
-
-                                        </ul>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
+                    
+                        </div> 
+                          
+                        </div>  
+                        <p class="col-lg-12 ms-auto" style="color: black; font-weight: bold;">
+                            Client : <strong style="font-weight: 400">{{ sorties[0]?.Client?.prenom + ' ' + sorties[0]?.Client?.nom }}</strong>
+                        </p>
+                                             
                         <div class="invoice_table">
                             <div class="table-responsive-md">
                                 <table class="table table-borderless">
                                     <thead>
                                         <tr>
-                                            <th scope="col">Produit</th>
-                                            <th scope="col">Dimension</th>
-                                            <th scope="col">Quantité</th>
-                                            <th scope="col">Prix U HT</th>
-                                            <th scope="col">Prix Total TTC</th>
+                                            <th scope="col">Reference</th>
+                                            <th scope="col">Designation</th>
+                                            <th scope="col">Prix Achat HT</th>
+                                            <th scope="col">TVA</th>
+                                            <th scope="col">Prix De Vente</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr *ngFor="let i of models">
-                                            <th scope="row">
-                                                <div class="user_dt_trans">
-                                                    <p>{{i.model.Designation}}</p>
-                                                    <p>{{i.couleur}}</p>
-                                                    <p>{{i.vitre.Designation}}</p>
-                                                </div>
-                                            </th>
-                                            <td>
-                                                <div class="user_dt_trans">
-                                                    <p> Surf : {{i.L * i.H /1000000}} m²</p>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="user_dt_trans">
-                                                    <p>{{i.qte}}</p>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="user_dt_trans">
-                                                    <p>{{i.prix_un_ht}}</p>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="user_dt_trans">
-                                                    <p>{{i.totale}}</p>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row"></th>
-                                            <td colspan="4">
-                                                <div class="user_dt_trans jsk1145">
-                                                    <div class="totalinv2"> Total : {{devis.TotalTTC}} TND</div>
-
-                                                </div>
-                                            </td>
-                                        </tr>
+                                        <ng-container *ngFor="let sortie of sorties">
+                                            <ng-container *ngFor="let article of sortie.Article">
+                                                <tr>
+                                                    <td>{{ article?.article?.Reference }}</td>
+                                                    <td>{{ article?.article?.Designation }}</td>
+                                                    <td>{{ article?.article?.PrixAchatHT }}</td>
+                                                    <td>{{ article?.article?.TauxTVA }}</td>
+                                                    <td>{{ article?.article?.PrixVenteTTC }}</td>
+                                                </tr>
+                                            </ng-container>
+                                        </ng-container>     
                                     </tbody>
                                 </table>
                             </div>
                         </div>
                         <div class="invoice_footer">
                             <div class="leftfooter">
-
                             </div>
                             <div class="righttfooter">
                                 <a class="print_btn" href="javascript:window.print();">Print</a>
                             </div>
                         </div>
+                        
                     </div>
+                    <div class="" style="color: black;"> Somme : {{ calculerSommePrix() | currency : 'TND' }}</div>
+
                 </div>
+                
             </div>
-        </div>
+            
+        
     </section>
+</div>
     <!-- Invoice Body End -->
 
     <!-- Scroll to Top Button Start -->

@@ -19,14 +19,14 @@
         <a [routerLink]="routes.dashboard" class="logo-small">
           <img src="assets/img/logo-small.png" alt="" />
         </a>
-        <!-- <a
+       <a
       (click)="toggleSidebar()"
       id="toggle_btn"
       [class.active]="miniSidebar === false"
       *ngIf="changeLayout === '1' || changeLayout === '3'"
       href="javascript:void(0);"
     >
-    </a> -->
+    </a> 
         <a (click)="toggleSidebar()" id="toggle_btn" href="javascript:void(0);"
           *ngIf="changeLayout === '1' || changeLayout === '3'" [class.active]="miniSidebar === true">
           <i data-feather="chevrons-left" class="feather-16"></i>

@@ -2,7 +2,7 @@
     <div class="col-lg-12">
         <div class="card">
             <div class="card-header">
-                <h5 class="card-title">Articles</h5>
+                <h5 class="card-title">Les Articles</h5>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -11,6 +11,8 @@
                             <tr>
                                 <th>Reference</th>
                                 <th>Designation</th>
+                                <th>Prix Achat HT</th>
+                                <th>TVA</th>
                                 <th>Prix De Vente</th>
                             </tr>
                         </thead>
@@ -21,6 +23,8 @@
                                     <tr>
                                         <td>{{ article?.article?.Reference }}</td>
                                         <td>{{ article?.article?.Designation }}</td>
+                                        <td>{{ article?.article?.PrixAchatHT }}</td>
+                                        <td>{{ article?.article?.TauxTVA }} %</td>
                                         <td>{{ article?.article?.PrixVenteTTC }}</td>
                                     </tr>
                                 </ng-container>
@@ -28,10 +32,26 @@
                         </tbody>
                     </table>
                 </div>
-                <div class="mt-12">
-                    Somme des prix : {{ calculerSommePrix() | currency : 'TND' }}
-                </div>
+                
             </div>
         </div>
     </div>
+    
+        <div >
+            <div class="btn-totallabel">
+                <h5 _ngcontent-pfb-c308>Somme Des Articles TTC</h5>
+               <h6 _ngcontent-pfb-c308>
+                    Total TTC : {{ calculerSommePrix() | currency : 'TND' }}
+               </h6>
+            </div>
+        </div>
+        <div >
+            <div class="btn-totallabel">
+                <h5 _ngcontent-pfb-c308>Somme Des Articles HT</h5>
+               <h6 _ngcontent-pfb-c308>
+                    Total HT : {{ calculerSommePrixHT() | currency : 'TND' }}
+               </h6>
+            </div>
+        </div>
+    
 </div>

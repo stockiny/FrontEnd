@@ -106,6 +106,7 @@
                                 <span class="checkmarks"></span>
                             </label>
                         </th>
+                        <th mat-sort-header="ID">ID</th>
                         <th mat-sort-header="Reference">Client</th>
                         <th mat-sort-header="Designation">Date De Sortie</th>
                         <th mat-sort-header="Categorie">Etat</th>
@@ -123,6 +124,7 @@
                                 <span class="checkmarks"></span>
                             </label>
                         </td>
+                        <td>{{ i + 1 }}</td>
                         <td>
                             {{ category.Client.nom }} {{ category.Client.prenom }}
                         </td>
@@ -133,6 +135,10 @@
                             <a class="me-3" [routerLink]="[routes.detailmodel, category.Client._id]">
                                 <img src="assets/img/icons/edit.svg" alt="Edit" />
                             </a>
+                            <a class="me-3" [routerLink]="[routes.facture, category.Client._id]">
+                                <img src="assets/img/icons/printer.svg" alt="Edit" />
+                            </a>
+                         
                             <a (click)="deleteBtn(category._id)" class="me-3 confirm-text" href="javascript:void(0);">
                                 <img src="assets/img/icons/delete.svg" alt="Delete" />
                             </a>

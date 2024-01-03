@@ -19,6 +19,7 @@ import { AddclientComponent } from './addclient/addclient.component';
 import { FacturesansdecoupageComponent } from './facturesansdecoupage/facturesansdecoupage.component';
 import { UpdatePricesComponent } from './update-prices/update-prices.component';
 import { DetailDevisComponent } from './detail-devis/detail-devis.component';
+import { MouvementstockComponent } from './mouvementstock/mouvementstock.component';
 
 
 const routes: Routes = [
@@ -41,6 +42,8 @@ const routes: Routes = [
 
   { path: 'updatePrices', component: UpdatePricesComponent },
   { path: 'factureSansDecoupage/:id', component: FacturesansdecoupageComponent },
+  { path: 'mouvementstock', component: MouvementstockComponent },
+
 
 
 

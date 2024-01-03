@@ -24,6 +24,7 @@ import { AddclientComponent } from './addclient/addclient.component';
 import { FacturesansdecoupageComponent } from './facturesansdecoupage/facturesansdecoupage.component';
 import { UpdatePricesComponent } from './update-prices/update-prices.component';
 import { DetailDevisComponent } from './detail-devis/detail-devis.component';
+import { MouvementstockComponent } from './mouvementstock/mouvementstock.component';
 
 
 
@@ -47,6 +48,7 @@ import { DetailDevisComponent } from './detail-devis/detail-devis.component';
     FacturesansdecoupageComponent,
     UpdatePricesComponent,
     DetailDevisComponent,
+    MouvementstockComponent,
 
 
   ],

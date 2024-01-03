@@ -165,6 +165,7 @@
                 <span class="checkmarks"></span>
               </label>
             </th>
+            <th mat-sort-header="ID">ID</th>
             <th mat-sort-header="ProductName">Photo</th>
             <th mat-sort-header="Reference">Reference</th>
             <th mat-sort-header="SKU">Designation</th>
@@ -185,6 +186,7 @@
                 <span class="checkmarks"></span>
               </label>
             </td>
+            <td>{{i+1}}</td>  
             <td >
               <a  class="product-img">
                 <img *ngIf="products.Photo ; else loggedOut" [src]="getFullImageUrl(products.Photo)" alt="product" />
@@ -194,6 +196,7 @@
               </a>
             
             </td>
+            
             <td>{{ products.Reference }}</td>
             <td>{{ products.Designation }}</td>
             <td>{{ products.Categorie.description}}</td>
@@ -203,10 +206,7 @@
             <td>{{ products.PrixVenteTTC }}</td>
 
             <td>
-              <a class="me-3"  [routerLink]="[routes.productDetails,products._id]">
-                <img src="assets/img/icons/eye.svg" alt="img" />
-              </a>
-
+             
               <a
                 (click)="deleteBtn(products._id)"
                 class="confirm-text"

@@ -332,6 +332,20 @@ export interface fournisseurList {
   isSelected?: boolean;
   CreatedBy?: string;
 }
+export interface MouvementStock {
+  _id: string;
+  sNo?: number;
+  article?: string;
+  Reference?: string;
+  Designation?: string;
+  quantiteInitiale?: boolean;
+  quantiteVendue?: string;
+  quantiteRestante?: string;
+  isSelected?: boolean;
+  CreatedBy?: string;
+
+}
+
 export interface CategoriesModel {
   _id?: any;
   sNo?: number;

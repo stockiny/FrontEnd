@@ -191,16 +191,17 @@ export class SidebarService {
       separateRoute: false,
       menu: [
         {
-          menuValue: 'Mouvement Stock Article',
-          route: routes.productList,
-          page: 'edit-product',
+          menuValue: 'Stock',
+          route: routes.mouvementstock,
+          page: 'mouvementstock',
           hasSubRoute: false,
           showSubRoute: false,
           icon: 'box',
           subMenus: [],
         },
+    
       ]
-    },
+    }
     /*
         {
           tittle: 'Sales',

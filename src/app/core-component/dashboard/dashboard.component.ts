@@ -53,6 +53,7 @@ export class DashboardComponent {
   public sortedVentes: any[] = [];
   clients:any;
   fournisseurs:any;
+  sorties:any;
   articles:any;
   vente:any;
   ventes: any[] = [];
@@ -165,13 +166,12 @@ export class DashboardComponent {
       console.log(res)
       this.stock=res.stock;
     });
-    this.appService.getAllVentes().subscribe(res => {
+    this.appService.getAllSortie().subscribe(res => {
       console.log(res);
-      this.ventes = res.vente;
+      this.sorties = res.sorties;
     });
     this.appService.getSumOfPrices().subscribe(
       (data: any) => {
-        // Formater le résultat avec trois chiffres après la virgule
         this.sumOfPrices = parseFloat(data.sum.toFixed(3));
       },
       (error) => {
@@ -224,27 +224,7 @@ export class DashboardComponent {
   }
   
   
-  public sortExpiredProducts(sort: Sort) {
-  this.appService.getAllVentes().subscribe(
-    (data: any) => {
-      if (!sort.active || sort.direction === '') {
-        this.ventes = data; // Mettez à jour la propriété 'ventes' avec les données non triées
-        this.sortedVentes = [...this.ventes]; // Copiez les données dans 'sortedVentes'
-      } else {
-        // Triez les données et mettez à jour les deux propriétés
-        this.ventes = data;
-        this.sortedVentes = data.sort((a: any, b: any) => {
-          const aValue = a[sort.active];
-          const bValue = b[sort.active];
-          return (aValue < bValue ? -1 : 1) * (sort.direction === 'asc' ? 1 : -1);
-        });
-      }
-    },
-    (error) => {
-      console.error('Error fetching ventes:', error);
-    }
-  );
-}
+ 
 
   }
   

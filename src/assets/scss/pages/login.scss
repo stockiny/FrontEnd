@@ -219,13 +219,13 @@
     }
     .login-img {
         width: 60%;
+        height: 100%;
+        margin-top: 70px;
+        padding-left: 250px;
         @include respond-below(custom991) {
             display: $__none;
         }
-         img {
-            width: $__full__width;
-            height: $__full_height_window;
-        }
+         
     }
 }
 .hover-a{

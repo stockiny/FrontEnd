@@ -232,6 +232,9 @@ export class AppService {
   getAllClients(): Observable<any> {
     return this.http.get(`${this.clientUrl}/clients`);
   }
+  getAllSortie(): Observable<any> {
+    return this.http.get(`${this.venteUrl}/sorties`);
+  }
 
   getClientById(id): Observable<any> {
     return this.http.get(`${this.clientUrl}/clients/${id}`);

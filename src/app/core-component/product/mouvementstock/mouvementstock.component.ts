@@ -3,30 +3,24 @@ import { Sort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { AppService } from 'src/app/app.service';
-import {
-  apiResultFormat,
-  DataService,
-  pageSelection,
-  routes,
-} from 'src/app/core/core.index';
-import { couleurList, CouleursModel, fournisseurList } from 'src/app/shared/model/page.model';
+import { DataService, pageSelection } from 'src/app/core/core.index';
+import { routes } from 'src/app/core/helpers/routes';
+import { MouvementStock } from 'src/app/shared/model/page.model';
 import { PaginationService, tablePageSize } from 'src/app/shared/shared.index';
 import { SweetalertService } from 'src/app/shared/sweetalert/sweetalert.service';
 import Swal from 'sweetalert2';
-interface data {
-  value: string;
-}
 
 @Component({
-  selector: 'app-list-fournisseurs',
-  templateUrl: './list-fournisseurs.component.html',
-  styleUrls: ['./list-fournisseurs.component.scss']
+  selector: 'app-mouvementstock',
+  templateUrl: './mouvementstock.component.html',
+  styleUrls: ['./mouvementstock.component.scss']
 })
-export class ListFournisseursComponent {
 
+export class MouvementstockComponent {
+  
   initChecked = false;
-  public tableData: Array<fournisseurList> = [];
-  public couleurData: Array<fournisseurList> = [];
+  public tableData: Array<MouvementStock> = [];
+  public couleurData: Array<MouvementStock> = [];
 
   public routes = routes;
   public selectedValue1 = ''
@@ -35,24 +29,13 @@ export class ListFournisseursComponent {
 
 
 
-  selectedList1: data[] = [
-    { value: 'Choose couleur' },
-    { value: 'Computer' },
-  ];
-  selectedList2: data[] = [
-    { value: 'Choose Sub couleur' },
-    { value: 'Fruits' },
-  ];
-  selectedList3: data[] = [
-    { value: 'Choose Sub Brand' },
-    { value: 'Iphone' },
-  ];
+ 
   // pagination variables
   public pageSize = 10;
   public serialNumberArray: Array<number> = [];
   public totalData = 0;
   showFilter = false;
-  dataSource!: MatTableDataSource<fournisseurList>;
+  dataSource!: MatTableDataSource<MouvementStock>;
   public searchDataValue = '';
   //** / pagination variables
 
@@ -128,12 +111,12 @@ export class ListFournisseursComponent {
 
 
   private getTableData(pageOption: pageSelection): void {
-    this.appService.getFournisseurs().subscribe((apiRes) => {
+    this.appService.getMouvementStock().subscribe((apiRes) => {
       this.couleurData = [];
       this.tableData = [];
       this.serialNumberArray = [];
-      this.totalData = apiRes.fournisseurs.length;
-      apiRes.fournisseurs.map((res: fournisseurList, index: number) => {
+      this.totalData = apiRes.stock.length;
+      apiRes.stock.map((res: MouvementStock, index: number) => {
         const serialNumber = index + 1;
         if (index >= pageOption.skip && serialNumber <= pageOption.limit) {
           res.sNo = serialNumber;
@@ -142,7 +125,7 @@ export class ListFournisseursComponent {
         }
       });
       console.log(this.tableData)
-      this.dataSource = new MatTableDataSource<fournisseurList>(this.couleurData);
+      this.dataSource = new MatTableDataSource<MouvementStock>(this.couleurData);
       this.pagination.calculatePageSize.next({
         totalData: this.totalData,
         pageSize: this.pageSize,
@@ -186,6 +169,5 @@ export class ListFournisseursComponent {
       });
     }
   }
-
 
 }

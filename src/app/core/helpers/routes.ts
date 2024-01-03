@@ -13,6 +13,7 @@ export class routes {
   public static get signIn(): string {
     return this.base + '/signin';
   }
+  
   public static get signUp(): string {
     return this.base + '/signup';
   }
@@ -119,6 +120,9 @@ export class routes {
   public static get addProduct(): string {
     return this.product + '/add-product';
   }
+  public static get mouvementstock(): string {
+    return this.product + '/mouvementstock';
+  }
   public static get ListCouleur(): string {
     return this.product + '/couleurs';
   }
@@ -201,6 +205,9 @@ export class routes {
   }
   public static get addSerie(): string {
     return this.product + '/serie-add';
+  }
+  public static get facture(): string {
+    return this.product + '/factureSansDecoupage';
   }
   public static get salesList(): string {
     return this.sales + '/sales-list';

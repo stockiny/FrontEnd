@@ -1,13 +1,9 @@
 <div class="page-header">
     <div class="page-title">
-        <h4> Fournisseurs list</h4>
-        <h6>View/Search product Category</h6>
+        <h4>Mouvement Du Stock</h4>
+        <h6></h6>
     </div>
-    <div class="page-btn">
-        <a [routerLink]="routes.addFournisseur" class="btn btn-added">
-            <img src="assets/img/icons/plus.svg" class="me-1" alt="img" />Ajouter Fournisseur
-        </a>
-    </div>
+   
 </div>
 
 <div class="card">
@@ -48,43 +44,16 @@
                 </ul>
             </div>
         </div>
-        <!-- /Filter -->
+       
         <div class="card mb-0 border-0" [ngClass]="{
           'show-sub-menu': showFilter === true,
           'hide-sub-menu': showFilter === false
         }">
             <div class="card-body pb-0">
                 <div class="row">
-                    <div class="col-lg-2 col-sm-6 col-12">
-                        <div class="form-group">
-                            <mat-select [(ngModel)]="selectedValue1" [ngModelOptions]="{standalone: true}"
-                                class="select" placeholder="Choose Category">
-                                <mat-option *ngFor="let data of selectedList1" [value]="data.value">
-                                    {{data.value}}
-                                </mat-option>
-                            </mat-select>
-                        </div>
-                    </div>
-                    <div class="col-lg-2 col-sm-6 col-12">
-                        <div class="form-group">
-                            <mat-select [(ngModel)]="selectedValue2" [ngModelOptions]="{standalone: true}"
-                                class="select" placeholder="Choose Sub Category">
-                                <mat-option *ngFor="let data of selectedList2" [value]="data.value">
-                                    {{data.value}}
-                                </mat-option>
-                            </mat-select>
-                        </div>
-                    </div>
-                    <div class="col-lg-2 col-sm-6 col-12">
-                        <div class="form-group">
-                            <mat-select [(ngModel)]="selectedValue3" [ngModelOptions]="{standalone: true}"
-                                class="select" placeholder="Choose Sub Brand">
-                                <mat-option *ngFor="let data of selectedList3" [value]="data.value">
-                                    {{data.value}}
-                                </mat-option>
-                            </mat-select>
-                        </div>
-                    </div>
+                    
+                   
+                
                     <div class="col-lg-1 col-sm-6 col-12 ms-auto">
                         <div class="form-group">
                             <a class="btn btn-filters ms-auto"><img src="assets/img/icons/search-whites.svg"
@@ -94,7 +63,6 @@
                 </div>
             </div>
         </div>
-        <!-- /Filter -->
         <div class="table-responsive">
             <table (matSortChange)="sortData($event)" matSort matSortActive="Sno" matSortDirection="asc"
                 matSortDisableClear class="table datanew">
@@ -106,63 +74,43 @@
                                 <span class="checkmarks"></span>
                             </label>
                         </th>
-                        <th mat-sort-header="Contact">ID</th>
-                        <th mat-sort-header="Contact">Contact</th>
-                        <th mat-sort-header="Email">Email</th>
-                        <th mat-sort-header="Telephone">Telephone</th>
-                        <th mat-sort-header="Fax">Fax</th>
-                        <th mat-sort-header="MatriculFiscal">MatriculFiscal</th>
-                        <th mat-sort-header="Description">Description</th>
-                        <th mat-sort-header="Adresse">Adresse</th>
-                        <th mat-sort-header="RaisonSocial">RaisonSocial</th>
+                        <th mat-sort-header="Contact">Reference</th>
+                        <th mat-sort-header="Email">Designation</th>
+                        <th mat-sort-header="Telephone">quantite Initiale</th>
+                        <th mat-sort-header="Fax">quantite Vendue</th>
+                        <th mat-sort-header="MatriculFiscal">quantite Restante</th>
+                        
 
                     </tr>
                 </thead>
                 <tbody>
                     <tr *ngFor="let category of couleurData; let i = index">
-                        
                         <td>
                             <label class="checkboxs">
                                 <input type="checkbox" [(ngModel)]="category.isSelected" />
                                 <span class="checkmarks"></span>
                             </label>
                         </td>
-                        <td>{{ i + 1 }}</td>
+                        
                         <td>
 
-                            {{ category.Contact }}
+                            {{ category.Reference }}
                         </td>
-                        <td>{{ category.Email }}</td>
-
-
-                        <td>
-
-                            {{ category.Telephone }}
-                        </td>
-                        <td>{{ category.Fax }}</td>
+                        <td>{{ category.Designation }}</td>
 
 
                         <td>
 
-                            {{ category.MatriculFiscal }}
+                            {{ category.quantiteInitiale }}
                         </td>
-                        <td>{{ category.Description }}</td>
+                        <td>{{ category.quantiteVendue }}</td>
 
 
                         <td>
 
-                            {{ category.Adresse }}
+                            {{ category.quantiteRestante }}
                         </td>
-                        <td>{{ category.RaisonSocial }}</td>
-
-                        <td>
-                            <a class="me-3" [routerLink]="routes.editCouleur">
-                                <img src="assets/img/icons/edit.svg" alt="img" />
-                            </a>
-                            <a (click)="deleteBtn(category._id)" class="me-3 confirm-text" href="javascript:void(0);">
-                                <img src="assets/img/icons/delete.svg" alt="img" />
-                            </a>
-                        </td>
+                        
                     </tr>
                     <tr *ngIf="couleurData.length === 0">
                         <td colspan="12">
@@ -174,4 +122,3 @@
         </div>
     </div>
 </div>
-<!-- /product list -->
